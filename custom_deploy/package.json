@@ -1,0 +1,24 @@
+{
+  "name": "discourse_docker.custom_deploy",
+  "version": "1.0.0",
+  "description": "- [Docker](https://docker.com/) is an open source project to pack, ship and run any Linux application in a lighter weight, faster container than a traditional virtual machine.",
+  "main": "prepare-config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/math-dojo/discourse_docker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/math-dojo/discourse_docker/issues"
+  },
+  "homepage": "https://github.com/math-dojo/discourse_docker#readme",
+  "dependencies": {
+    "js-yaml": "^3.13.1",
+    "yargs": "^15.1.0"
+  }
+}
