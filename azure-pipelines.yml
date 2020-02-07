@@ -5,6 +5,10 @@
 
 trigger:
 - master
+- quick-start
+
+variables:
+- group: Discourse Secrets
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -14,6 +18,11 @@ steps:
   displayName: 'Run a one-line script'
 
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    cd ./custom_deploy
+    npm install
+  displayName: 'Install dependencies'
+
+- script: |
+    cd ./custom_deploy
+    node ./prepare-config.js --env.smtp.password=$(sendgridApiKey) --env.hostname=stingy
+  displayName: 'Prepare app.yml for discourse'

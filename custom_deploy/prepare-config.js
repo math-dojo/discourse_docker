@@ -5,9 +5,11 @@ let doc;
 
 const argv = require('yargs')
 .default('input.templatepath', '../samples/standalone.yml')
-.default('env.smtp.username', 'user_name')
+.default('env.smtp.address', 'smtp.sendgrid.net')
+.default('env.smtp.username', 'apikey')
 .default('env.smtp.password', 'supersecretstuff')
-.default('output.path', '../containers/app2.yml')
+.default('output.path', '../containers/app.yml')
+.default('env.hostname', 'discourse.example.com')
 .argv;
 
 try {
@@ -21,8 +23,11 @@ try {
 }
 
 modifiedDoc = Object.assign({}, doc);
+
+modifiedDoc.env['DISCOURSE_SMTP_ADDRESS'] = argv.env.smtp.address
 modifiedDoc.env['DISCOURSE_SMTP_USER_NAME'] = argv.env.smtp.username
 modifiedDoc.env['DISCOURSE_SMTP_PASSWORD'] = argv.env.smtp.password
+modifiedDoc.env['DISCOURSE_HOSTNAME'] = argv.env.hostname
 
 
 newYamlToWrite = yaml.safeDump(modifiedDoc);
